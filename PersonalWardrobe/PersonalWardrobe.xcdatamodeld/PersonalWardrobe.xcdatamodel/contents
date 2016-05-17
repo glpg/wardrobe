@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15B42" minimumToolsVersion="Automatic">
+    <entity name="Clothes" representedClassName=".Clothes" syncable="YES">
+        <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fabric" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="from" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="style" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subcategory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnail" attributeType="Binary" indexed="YES" syncable="YES"/>
+        <relationship name="fullsizeImg" maxCount="1" deletionRule="Nullify" destinationEntity="FullsizeImages" inverseName="clothes" inverseEntity="FullsizeImages" syncable="YES"/>
+        <relationship name="matches" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Matches" inverseName="clothes" inverseEntity="Matches" syncable="YES"/>
+    </entity>
+    <entity name="FullsizeImages" representedClassName=".FullsizeImages" syncable="YES">
+        <attribute name="fullsizeimage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <relationship name="clothes" maxCount="1" deletionRule="Nullify" destinationEntity="Clothes" inverseName="fullsizeImg" inverseEntity="Clothes" syncable="YES"/>
+    </entity>
+    <entity name="Matches" representedClassName=".Matches" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnail" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="clothes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clothes" inverseName="matches" inverseEntity="Clothes" syncable="YES"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MatchImages" inverseName="match" inverseEntity="MatchImages" syncable="YES"/>
+    </entity>
+    <entity name="MatchImages" representedClassName=".MatchImages" syncable="YES">
+        <attribute name="fullsizeimage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="match" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="Matches" inverseName="image" inverseEntity="Matches" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Clothes" positionX="45" positionY="180" width="128" height="225"/>
+        <element name="FullsizeImages" positionX="63" positionY="189" width="128" height="75"/>
+        <element name="Matches" positionX="45" positionY="117" width="128" height="105"/>
+        <element name="MatchImages" positionX="54" positionY="243" width="128" height="75"/>
+    </elements>
+</model>
